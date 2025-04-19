@@ -1,0 +1,254 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Import a modern font */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  
+  /* Body styling with dark theme */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f 0%, #2a2a40 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  /* Header styling */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+  }
+  
+  header img {
+    width: 40px;
+    margin-right: 15px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Tools button */
+  button#toolsButton {
+    background: linear-gradient(45deg, #007bff, #00c6ff);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+  }
+  
+  button#toolsButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6);
+  }
+  
+  button#toolsButton:active {
+    transform: translateY(1px);
+  }
+  
+  /* Tool container (e.g., JPG to PDF section) */
+  #tool-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+  }
+  
+  #tool-container:hover {
+    transform: translateY(-5px);
+  }
+  
+  #tool-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* File input */
+  #tool-container input[type="file"] {
+    display: block;
+    margin: 15px auto;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+    border: 2px dashed #555;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+  }
+  
+  #tool-container input[type="file"]:hover {
+    border-color: #007bff;
+  }
+  
+  /* Convert button */
+  #tool-container button {
+    display: block;
+    margin: 20px auto;
+    background: linear-gradient(45deg, #ff6f61, #ff9a76);
+    color: #ffffff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 111, 97, 0.4);
+  }
+  
+  #tool-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 111, 97, 0.6);
+  }
+  
+  #tool-container button:active {
+    transform: translateY(1px);
+  }
+  
+  /* Download link */
+  #tool-container a#downloadLink {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #00c6ff;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  #tool-container a#downloadLink:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+  }
+  
+  /* Status text */
+  #tool-container p#status {
+    text-align: center;
+    margin-top: 15px;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 1.5rem;
+    }
+  
+    header img {
+      width: 30px;
+    }
+  
+    #tool-container {
+      padding: 20px;
+    }
+  
+    #tool-container h2 {
+      font-size: 1.2rem;
+    }
+  
+    #tool-container button {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+  }
+
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+  }
+
+
+  #toolsMenu {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  #toolsMenu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    text-align: left;
+    transition: background 0.3s ease;
+  }
+  #toolsMenu button:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+
+  .light-theme {
+    background: linear-gradient(135deg, #f0f0f5 0%, #d9e2ec 100%);
+    color: #333333;
+  }
+  .light-theme #tool-container,
+  .light-theme header {
+    background: rgba(255, 255, 255, 0.8);
+  }

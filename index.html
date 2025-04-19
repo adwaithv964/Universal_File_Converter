@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Universal PDF Toolkit</title>
+  <link rel="stylesheet" href="style/style.css" />
+
+  <!-- Libraries (loaded asynchronously for better performance) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>📄 Universal PDF Toolkit</h1>
+  </header>
+
+  <main>
+    <!-- Tools Button -->
+    <button id="toolsButton" onclick="toggleTools()">Tools ▼</button>
+
+    <!-- Tools Container (hidden by default) -->
+    <div id="toolsContainer" style="display: none;">
+      <!-- Compress -->
+      <section>
+        <h3>Compress</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('compress')">Compress PDF</button>
+        </div>
+      </section>
+
+      <!-- Organize -->
+      <section>
+        <h3>Organize</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('merge')">Merge PDF</button>
+          <button onclick="loadTool('split')">Split PDF</button>
+          <button onclick="loadTool('rotate')">Rotate PDF</button>
+          <button onclick="loadTool('deletePages')">Delete PDF Pages</button>
+        </div>
+      </section>
+
+      <!-- View & Edit -->
+      <section>
+        <h3>View & Edit</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('edit')">Edit PDF</button>
+          <button onclick="loadTool('pdfAnnotator')">PDF Annotator</button>
+          <button onclick="loadTool('pdfReader')">PDF Reader</button>
+        </div>
+      </section>
+
+      <!-- Convert from PDF -->
+      <section>
+        <h3>Convert from PDF</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('pdfToWord')">PDF to Word</button>
+          <button onclick="loadTool('pdfToExcel')">PDF to Excel</button>
+          <button onclick="loadTool('pdfToPpt')">PDF to PPT</button>
+          <button onclick="loadTool('pdfToJpg')">PDF to JPG</button>
+        </div>
+      </section>
+
+      <!-- Convert to PDF -->
+      <section>
+        <h3>Convert to PDF</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('wordToPdf')">Word to PDF</button>
+          <button onclick="loadTool('excelToPdf')">Excel to PDF</button>
+          <button onclick="loadTool('pptToPdf')">PPT to PDF</button>
+          <button onclick="loadTool('jpgToPdf')">JPG to PDF</button>
+        </div>
+      </section>
+
+      <!-- Sign -->
+      <section>
+        <h3>Sign</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('signPdf')">Sign PDF</button>
+        </div>
+      </section>
+
+      <!-- AI PDF -->
+      <section>
+        <h3>AI PDF</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('chat')">Chat with PDF (AI)</button>
+          <button onclick="loadTool('summarizer')">AI PDF Summarizer</button>
+        </div>
+      </section>
+
+      <!-- More -->
+      <section>
+        <h3>More</h3>
+        <div class="tool-grid">
+          <button onclick="loadTool('ocr')">PDF OCR</button>
+          <button onclick="loadTool('unlock')">Unlock PDF</button>
+          <button onclick="loadTool('protect')">Protect PDF</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Tool Container -->
+    <div id="tool-container"></div>
+  </main>
+
+  <!-- Inline script to toggle tools -->
+  <script>
+    function toggleTools() {
+      const toolsContainer = document.getElementById('toolsContainer');
+      const toolsButton = document.getElementById('toolsButton');
+      const isHidden = toolsContainer.style.display === 'none';
+      toolsContainer.style.display = isHidden ? 'block' : 'none';
+      toolsButton.textContent = isHidden ? 'Tools ▲' : 'Tools ▼';
+    }
+  </script>
+
+  <!-- Load main.js at the end for better performance -->
+  <script src="js/main.js"></script>
+</body>
+</html>
