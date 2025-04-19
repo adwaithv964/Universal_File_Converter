@@ -22,83 +22,96 @@
       <div class="dropdown">
         <button id="toolsButton" onclick="toggleTools()">Tools ▼</button>
         <div id="toolsContainer" class="dropdown-content" style="display: none;">
-          <!-- Compress -->
-          <section>
-            <h3>Compress</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('compress')">Compress PDF</button>
-            </div>
-          </section>
+          <div class="dropdown-grid">
+            <!-- Compress -->
+            <section>
+              <h3>Compress</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('compress')">Compress PDF</button>
+              </div>
+            </section>
 
-          <!-- Organize -->
-          <section>
-            <h3>Organize</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('merge')">Merge PDF</button>
-              <button onclick="loadToolAndClose('split')">Split PDF</button>
-              <button onclick="loadToolAndClose('rotate')">Rotate PDF</button>
-              <button onclick="loadToolAndClose('deletePages')">Delete PDF Pages</button>
-            </div>
-          </section>
+            <!-- Organize -->
+            <section>
+              <h3>Organize</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('merge')">Merge PDF</button>
+                <button onclick="loadToolAndClose('split')">Split PDF</button>
+                <button onclick="loadToolAndClose('rotate')">Rotate PDF</button>
+                <button onclick="loadToolAndClose('deletePages')">Delete PDF Pages</button>
+                <button onclick="loadToolAndClose('extractPages')">Extract PDF Pages</button>
+                <button onclick="loadToolAndClose('organize')">Organize PDF</button>
+              </div>
+            </section>
 
-          <!-- View & Edit -->
-          <section>
-            <h3>View & Edit</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('edit')">Edit PDF</button>
-              <button onclick="loadToolAndClose('pdfAnnotator')">PDF Annotator</button>
-              <button onclick="loadToolAndClose('pdfReader')">PDF Reader</button>
-            </div>
-          </section>
+            <!-- View & Edit -->
+            <section>
+              <h3>View & Edit</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('edit')">Edit PDF</button>
+                <button onclick="loadToolAndClose('pdfAnnotator')">PDF Annotator</button>
+                <button onclick="loadToolAndClose('pdfReader')">PDF Reader</button>
+                <button onclick="loadToolAndClose('numberPages')">Number Pages</button>
+                <button onclick="loadToolAndClose('crop')">Crop PDF</button>
+                <button onclick="loadToolAndClose('redact')">Redact PDF</button>
+                <button onclick="loadToolAndClose('watermark')">Watermark PDF</button>
+              </div>
+            </section>
 
-          <!-- Convert from PDF -->
-          <section>
-            <h3>Convert from PDF</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('pdfToWord')">PDF to Word</button>
-              <button onclick="loadToolAndClose('pdfToExcel')">PDF to Excel</button>
-              <button onclick="loadToolAndClose('pdfToPpt')">PDF to PPT</button>
-              <button onclick="loadToolAndClose('pdfToJpg')">PDF to JPG</button>
-            </div>
-          </section>
+            <!-- Convert from PDF -->
+            <section>
+              <h3>Convert from PDF</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('pdfToWord')">PDF to Word</button>
+                <button onclick="loadToolAndClose('pdfToExcel')">PDF to Excel</button>
+                <button onclick="loadToolAndClose('pdfToPpt')">PDF to PPT</button>
+                <button onclick="loadToolAndClose('pdfToJpg')">PDF to JPG</button>
+                <button onclick="loadToolAndClose('ocr')">PDF OCR</button>
+              </div>
+            </section>
 
-          <!-- Convert to PDF -->
-          <section>
-            <h3>Convert to PDF</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('wordToPdf')">Word to PDF</button>
-              <button onclick="loadToolAndClose('excelToPdf')">Excel to PDF</button>
-              <button onclick="loadToolAndClose('pptToPdf')">PPT to PDF</button>
-              <button onclick="loadToolAndClose('jpgToPdf')">JPG to PDF</button>
-            </div>
-          </section>
+            <!-- Convert to PDF -->
+            <section>
+              <h3>Convert to PDF</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('wordToPdf')">Word to PDF</button>
+                <button onclick="loadToolAndClose('excelToPdf')">Excel to PDF</button>
+                <button onclick="loadToolAndClose('pptToPdf')">PPT to PDF</button>
+                <button onclick="loadToolAndClose('jpgToPdf')">JPG to PDF</button>
+              </div>
+            </section>
 
-          <!-- Sign -->
-          <section>
-            <h3>Sign</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('signPdf')">Sign PDF</button>
-            </div>
-          </section>
+            <!-- Sign -->
+            <section>
+              <h3>Sign</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('signPdf')">Sign PDF</button>
+                <button onclick="loadToolAndClose('requestSignatures')">Request Signatures (SIGN.com)</button>
+              </div>
+            </section>
 
-          <!-- AI PDF -->
-          <section>
-            <h3>AI PDF</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('chat')">Chat with PDF (AI)</button>
-              <button onclick="loadToolAndClose('summarizer')">AI PDF Summarizer</button>
-            </div>
-          </section>
+            <!-- AI PDF -->
+            <section>
+              <h3>AI PDF</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('chat')">Chat with PDF</button>
+                <button onclick="loadToolAndClose('summarizer')">AI PDF Summarizer</button>
+                <button onclick="loadToolAndClose('translator')">Translate PDF</button>
+                <button onclick="loadToolAndClose('aiQuestionGenerator')">AI Question Generator</button>
+              </div>
+            </section>
 
-          <!-- More -->
-          <section>
-            <h3>More</h3>
-            <div class="tool-grid">
-              <button onclick="loadToolAndClose('ocr')">PDF OCR</button>
-              <button onclick="loadToolAndClose('unlock')">Unlock PDF</button>
-              <button onclick="loadToolAndClose('protect')">Protect PDF</button>
-            </div>
-          </section>
+            <!-- More -->
+            <section>
+              <h3>More</h3>
+              <div class="tool-list">
+                <button onclick="loadToolAndClose('unlock')">Unlock PDF</button>
+                <button onclick="loadToolAndClose('protect')">Protect PDF</button>
+                <button onclick="loadToolAndClose('flatten')">Flatten PDF</button>
+                <button onclick="loadToolAndClose('pdfScanner')">PDF Scanner</button>
+              </div>
+            </section>
+          </div>
         </div>
       </div>
       <a href="#" onclick="loadTool('compress')">Compress</a>
@@ -108,12 +121,7 @@
       <a href="#" onclick="loadTool('signPdf')">Sign</a>
       <a href="#" onclick="loadTool('chat')">AI PDF</a>
     </nav>
-    <div class="header-right">
-      <a href="#">Pricing</a>
-      <a href="#">Teams</a>
-      <a href="#">Log in</a>
-      <button class="free-trial">Free Trial</button>
-    </div>
+    
   </header>
 
   <main>
@@ -122,6 +130,9 @@
       <h2>All Universal PDF Tools</h2>
       <p>Make use of our collection of PDF tools to process digital documents and streamline your workflow seamlessly.</p>
     </section>
+
+    <!-- Tool Container (Moved above Tools Grid) -->
+    <div id="tool-container" align="center" ></div>
 
     <!-- Tools Grid -->
     <section class="tools-grid-section">
@@ -182,9 +193,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Tool Container -->
-    <div id="tool-container"></div>
   </main>
 
   <!-- Inline script to toggle tools and load tool input -->
@@ -212,7 +220,7 @@
       toolDiv.className = 'tool-content';
 
       const title = document.createElement('h2');
-      title.textContent = tool.charAt(0).toUpperCase() + tool.slice(1).replace(/([A-Z])/g, ' $1') + ' Tool';
+      title.textContent = tool.charAt(0).toUpperCase() + tool.slice(1).replace(/([A-Z])/g, ' $1');
       toolDiv.appendChild(title);
 
       const fileInputContainer = document.createElement('div');
@@ -241,7 +249,7 @@
       toolDiv.appendChild(fileInputContainer);
 
       const convertBtn = document.createElement('button');
-      convertBtn.textContent = 'Process File';
+      convertBtn.textContent = tool.charAt(0).toUpperCase() + tool.slice(1).replace(/([A-Z])/g, ' $1').split(' ').slice(-1)[0]; // e.g., "Split" for "split"
       convertBtn.onclick = () => {
         alert(`Processing ${tool}... (This is a placeholder action)`);
       };
@@ -249,19 +257,10 @@
 
       toolContainer.appendChild(toolDiv);
 
-      // Debug: Confirm the file input is added
-      console.log('File input added:', fileInput);
-
       // Scroll to the tool container
       setTimeout(() => {
-        const rect = toolContainer.getBoundingClientRect();
-        const scrollPosition = rect.top + window.scrollY - 60; // Adjust for header
-        console.log('Tool container position:', rect.top, 'Scroll position:', scrollPosition);
-        window.scrollTo({
-          top: scrollPosition,
-          behavior: 'smooth'
-        });
-      }, 200); // Increased delay to ensure rendering
+        toolContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100); // Small delay to ensure rendering
     }
 
     // Helper function to determine accepted file types based on tool
