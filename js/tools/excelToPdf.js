@@ -9,10 +9,25 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>Excel to PDF</h2>
-    <input type="file" id="excelFile" accept=".xls,.xlsx" />
+    <div class="file-input-container">
+      <input type="file" id="excelFile" accept=".xls,.xlsx" onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('excelFile')" style="display: none;">×</button>
+    </div>
     <button onclick="convertExcelToPdf()">Convert</button>
     <p id="status">Excel to PDF conversion is not yet implemented.</p>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function convertExcelToPdf() {

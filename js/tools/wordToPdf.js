@@ -9,10 +9,25 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>Word to PDF</h2>
-    <input type="file" id="wordFile" accept=".doc,.docx" />
+    <div class="file-input-container">
+      <input type="file" id="wordFile" accept=".doc,.docx" onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('wordFile')" style="display: none;">×</button>
+    </div>
     <button onclick="convertWordToPdf()">Convert</button>
     <p id="status">Word to PDF conversion is not yet implemented.</p>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function convertWordToPdf() {

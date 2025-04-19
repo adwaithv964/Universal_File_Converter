@@ -10,7 +10,10 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>Rotate PDF</h2>
-    <input type="file" id="pdfFile" accept="application/pdf" />
+    <div class="file-input-container">
+      <input type="file" id="pdfFile" accept="application/pdf" onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('pdfFile')" style="display: none;">×</button>
+    </div>
     <select id="rotationAngle">
       <option value="90">90°</option>
       <option value="180">180°</option>
@@ -20,6 +23,18 @@ function initializeTool() {
     <a id="downloadLink" style="display:none">Download Rotated PDF</a>
     <p id="status"></p>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function rotatePDF() {
@@ -41,7 +56,11 @@ async function rotatePDF() {
     const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
     const pages = pdfDoc.getPages();
 
-    pages.forEach(page => page.setRotation(page.getRotation().angle + angle));
+    pages.forEach(page => {
+      const currentAngle = page.getRotation().angle;
+      const newAngle = (currentAngle + angle) % 360;
+      page.setRotation(newAngle);
+    });
 
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: "application/pdf" });

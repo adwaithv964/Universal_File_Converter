@@ -14,99 +14,180 @@
 </head>
 <body>
   <header>
-    <h1>📄 Universal PDF Toolkit</h1>
+    <div class="header-left">
+      <span class="logo">📄</span>
+      <h1>Universal PDF Toolkit</h1>
+    </div>
+    <nav class="header-nav">
+      <div class="dropdown">
+        <button id="toolsButton" onclick="toggleTools()">Tools ▼</button>
+        <div id="toolsContainer" class="dropdown-content" style="display: none;">
+          <!-- Compress -->
+          <section>
+            <h3>Compress</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('compress')">Compress PDF</button>
+            </div>
+          </section>
+
+          <!-- Organize -->
+          <section>
+            <h3>Organize</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('merge')">Merge PDF</button>
+              <button onclick="loadToolAndClose('split')">Split PDF</button>
+              <button onclick="loadToolAndClose('rotate')">Rotate PDF</button>
+              <button onclick="loadToolAndClose('deletePages')">Delete PDF Pages</button>
+            </div>
+          </section>
+
+          <!-- View & Edit -->
+          <section>
+            <h3>View & Edit</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('edit')">Edit PDF</button>
+              <button onclick="loadToolAndClose('pdfAnnotator')">PDF Annotator</button>
+              <button onclick="loadToolAndClose('pdfReader')">PDF Reader</button>
+            </div>
+          </section>
+
+          <!-- Convert from PDF -->
+          <section>
+            <h3>Convert from PDF</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('pdfToWord')">PDF to Word</button>
+              <button onclick="loadToolAndClose('pdfToExcel')">PDF to Excel</button>
+              <button onclick="loadToolAndClose('pdfToPpt')">PDF to PPT</button>
+              <button onclick="loadToolAndClose('pdfToJpg')">PDF to JPG</button>
+            </div>
+          </section>
+
+          <!-- Convert to PDF -->
+          <section>
+            <h3>Convert to PDF</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('wordToPdf')">Word to PDF</button>
+              <button onclick="loadToolAndClose('excelToPdf')">Excel to PDF</button>
+              <button onclick="loadToolAndClose('pptToPdf')">PPT to PDF</button>
+              <button onclick="loadToolAndClose('jpgToPdf')">JPG to PDF</button>
+            </div>
+          </section>
+
+          <!-- Sign -->
+          <section>
+            <h3>Sign</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('signPdf')">Sign PDF</button>
+            </div>
+          </section>
+
+          <!-- AI PDF -->
+          <section>
+            <h3>AI PDF</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('chat')">Chat with PDF (AI)</button>
+              <button onclick="loadToolAndClose('summarizer')">AI PDF Summarizer</button>
+            </div>
+          </section>
+
+          <!-- More -->
+          <section>
+            <h3>More</h3>
+            <div class="tool-grid">
+              <button onclick="loadToolAndClose('ocr')">PDF OCR</button>
+              <button onclick="loadToolAndClose('unlock')">Unlock PDF</button>
+              <button onclick="loadToolAndClose('protect')">Protect PDF</button>
+            </div>
+          </section>
+        </div>
+      </div>
+      <a href="#" onclick="loadTool('compress')">Compress</a>
+      <a href="#" onclick="loadTool('pdfToWord')">Convert</a>
+      <a href="#" onclick="loadTool('merge')">Merge</a>
+      <a href="#" onclick="loadTool('edit')">Edit</a>
+      <a href="#" onclick="loadTool('signPdf')">Sign</a>
+      <a href="#" onclick="loadTool('chat')">AI PDF</a>
+    </nav>
+    <div class="header-right">
+      <a href="#">Pricing</a>
+      <a href="#">Teams</a>
+      <a href="#">Log in</a>
+      <button class="free-trial">Free Trial</button>
+    </div>
   </header>
 
   <main>
-    <!-- Tools Button -->
-    <button id="toolsButton" onclick="toggleTools()">Tools ▼</button>
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+      <h2>All Universal PDF Tools</h2>
+      <p>Make use of our collection of PDF tools to process digital documents and streamline your workflow seamlessly.</p>
+    </section>
 
-    <!-- Tools Container (hidden by default) -->
-    <div id="toolsContainer" style="display: none;">
-      <!-- Compress -->
-      <section>
-        <h3>Compress</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('compress')">Compress PDF</button>
+    <!-- Tools Grid -->
+    <section class="tools-grid-section">
+      <div class="tools-grid">
+        <div class="tool-card" onclick="loadTool('compress')">
+          <span class="tool-icon" style="background: #ff4d4d;">📄</span>
+          <h3>Compress PDF</h3>
+          <p>Reduce the size of your PDF without losing quality</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-
-      <!-- Organize -->
-      <section>
-        <h3>Organize</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('merge')">Merge PDF</button>
-          <button onclick="loadTool('split')">Split PDF</button>
-          <button onclick="loadTool('rotate')">Rotate PDF</button>
-          <button onclick="loadTool('deletePages')">Delete PDF Pages</button>
+        <div class="tool-card" onclick="loadTool('pdfToWord')">
+          <span class="tool-icon" style="background: #ff4d4d;">📄</span>
+          <h3>PDF Converter</h3>
+          <p>Convert Word, PowerPoint and Excel files to and from PDF</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-
-      <!-- View & Edit -->
-      <section>
-        <h3>View & Edit</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('edit')">Edit PDF</button>
-          <button onclick="loadTool('pdfAnnotator')">PDF Annotator</button>
-          <button onclick="loadTool('pdfReader')">PDF Reader</button>
+        <div class="tool-card" onclick="loadTool('ocr')">
+          <span class="tool-icon" style="background: #ff4d4d;">📄</span>
+          <h3>PDF OCR</h3>
+          <p>Make text in scans searchable</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-
-      <!-- Convert from PDF -->
-      <section>
-        <h3>Convert from PDF</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('pdfToWord')">PDF to Word</button>
-          <button onclick="loadTool('pdfToExcel')">PDF to Excel</button>
-          <button onclick="loadTool('pdfToPpt')">PDF to PPT</button>
-          <button onclick="loadTool('pdfToJpg')">PDF to JPG</button>
+        <div class="tool-card" onclick="loadTool('pptToPdf')">
+          <span class="tool-icon" style="background: #ff8c00;">📄</span>
+          <h3>PPT to PDF</h3>
+          <p>Convert PowerPoint presentations to PDF documents</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-
-      <!-- Convert to PDF -->
-      <section>
-        <h3>Convert to PDF</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('wordToPdf')">Word to PDF</button>
-          <button onclick="loadTool('excelToPdf')">Excel to PDF</button>
-          <button onclick="loadTool('pptToPdf')">PPT to PDF</button>
-          <button onclick="loadTool('jpgToPdf')">JPG to PDF</button>
+        <div class="tool-card" onclick="loadTool('pdfToPpt')">
+          <span class="tool-icon" style="background: #ff8c00;">📄</span>
+          <h3>PDF to PPT</h3>
+          <p>Convert PDFs to editable PowerPoint presentations</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-
-      <!-- Sign -->
-      <section>
-        <h3>Sign</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('signPdf')">Sign PDF</button>
+        <div class="tool-card" onclick="loadTool('jpgToPdf')">
+          <span class="tool-icon" style="background: #ffd700;">📄</span>
+          <h3>JPG to PDF</h3>
+          <p>Transform JPG, PNG, BMP, GIF, and TIFF images to PDF</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-
-      <!-- AI PDF -->
-      <section>
-        <h3>AI PDF</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('chat')">Chat with PDF (AI)</button>
-          <button onclick="loadTool('summarizer')">AI PDF Summarizer</button>
+        <div class="tool-card" onclick="loadTool('pdfToJpg')">
+          <span class="tool-icon" style="background: #ffd700;">📄</span>
+          <h3>PDF to JPG</h3>
+          <p>Extract images from your PDF or save each page as a separate image</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-
-      <!-- More -->
-      <section>
-        <h3>More</h3>
-        <div class="tool-grid">
-          <button onclick="loadTool('ocr')">PDF OCR</button>
-          <button onclick="loadTool('unlock')">Unlock PDF</button>
-          <button onclick="loadTool('protect')">Protect PDF</button>
+        <div class="tool-card" onclick="loadTool('excelToPdf')">
+          <span class="tool-icon" style="background: #32cd32;">📄</span>
+          <h3>Excel to PDF</h3>
+          <p>Convert Excel spreadsheets to PDF documents</p>
+          <span class="arrow">➔</span>
         </div>
-      </section>
-    </div>
+        <div class="tool-card" onclick="loadTool('pdfToExcel')">
+          <span class="tool-icon" style="background: #32cd32;">📄</span>
+          <h3>PDF to Excel</h3>
+          <p>Convert PDFs to editable Excel spreadsheets</p>
+          <span class="arrow">➔</span>
+        </div>
+      </div>
+    </section>
 
     <!-- Tool Container -->
     <div id="tool-container"></div>
   </main>
 
-  <!-- Inline script to toggle tools -->
+  <!-- Inline script to toggle tools and load tool input -->
   <script>
     function toggleTools() {
       const toolsContainer = document.getElementById('toolsContainer');
@@ -115,6 +196,100 @@
       toolsContainer.style.display = isHidden ? 'block' : 'none';
       toolsButton.textContent = isHidden ? 'Tools ▲' : 'Tools ▼';
     }
+
+    function loadToolAndClose(tool) {
+      loadTool(tool);
+      toggleTools();
+    }
+
+    // Load tool input box and scroll to it
+    function loadTool(tool) {
+      const toolContainer = document.getElementById('tool-container');
+      toolContainer.innerHTML = ''; // Clear previous content
+
+      // Create tool-specific content
+      const toolDiv = document.createElement('div');
+      toolDiv.className = 'tool-content';
+
+      const title = document.createElement('h2');
+      title.textContent = tool.charAt(0).toUpperCase() + tool.slice(1).replace(/([A-Z])/g, ' $1') + ' Tool';
+      toolDiv.appendChild(title);
+
+      const fileInputContainer = document.createElement('div');
+      fileInputContainer.className = 'file-input-container';
+
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.id = 'fileInput';
+      fileInput.accept = getAcceptedFileTypes(tool);
+      fileInputContainer.appendChild(fileInput);
+
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'remove-file-btn';
+      removeBtn.textContent = 'x';
+      removeBtn.style.display = 'none';
+      removeBtn.onclick = () => {
+        fileInput.value = '';
+        removeBtn.style.display = 'none';
+      };
+      fileInputContainer.appendChild(removeBtn);
+
+      fileInput.onchange = () => {
+        removeBtn.style.display = fileInput.files.length > 0 ? 'flex' : 'none';
+      };
+
+      toolDiv.appendChild(fileInputContainer);
+
+      const convertBtn = document.createElement('button');
+      convertBtn.textContent = 'Process File';
+      convertBtn.onclick = () => {
+        alert(`Processing ${tool}... (This is a placeholder action)`);
+      };
+      toolDiv.appendChild(convertBtn);
+
+      toolContainer.appendChild(toolDiv);
+
+      // Debug: Confirm the file input is added
+      console.log('File input added:', fileInput);
+
+      // Scroll to the tool container
+      setTimeout(() => {
+        const rect = toolContainer.getBoundingClientRect();
+        const scrollPosition = rect.top + window.scrollY - 60; // Adjust for header
+        console.log('Tool container position:', rect.top, 'Scroll position:', scrollPosition);
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        });
+      }, 200); // Increased delay to ensure rendering
+    }
+
+    // Helper function to determine accepted file types based on tool
+    function getAcceptedFileTypes(tool) {
+      switch (tool) {
+        case 'jpgToPdf':
+          return 'image/jpeg,image/png,image/bmp,image/gif,image/tiff';
+        case 'wordToPdf':
+          return '.doc,.docx';
+        case 'excelToPdf':
+          return '.xls,.xlsx';
+        case 'pptToPdf':
+          return '.ppt,.pptx';
+        default:
+          return '.pdf';
+      }
+    }
+
+    // Close dropdown when clicking anywhere on the page
+    document.addEventListener('click', function(event) {
+      const toolsContainer = document.getElementById('toolsContainer');
+      const toolsButton = document.getElementById('toolsButton');
+      const isClickInside = toolsButton.contains(event.target) || toolsContainer.contains(event.target);
+
+      if (!isClickInside && toolsContainer.style.display === 'block') {
+        toggleTools();
+      }
+    });
   </script>
 
   <!-- Load main.js at the end for better performance -->

@@ -10,11 +10,26 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>Merge PDFs</h2>
-    <input type="file" id="pdfFiles" accept="application/pdf" multiple />
+    <div class="file-input-container">
+      <input type="file" id="pdfFiles" accept="application/pdf" multiple onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('pdfFiles')" style="display: none;">×</button>
+    </div>
     <button onclick="mergePDFs()">Merge</button>
     <a id="downloadLink" style="display:none">Download Merged PDF</a>
     <p id="status"></p>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function mergePDFs() {

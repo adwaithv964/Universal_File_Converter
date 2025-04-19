@@ -10,12 +10,27 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>Edit PDF</h2>
-    <input type="file" id="pdfFile" accept="application/pdf" />
+    <div class="file-input-container">
+      <input type="file" id="pdfFile" accept="application/pdf" onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('pdfFile')" style="display: none;">×</button>
+    </div>
     <input type="text" id="textToAdd" placeholder="Text to add" />
     <button onclick="editPDF()">Add Text</button>
     <a id="downloadLink" style="display:none">Download Edited PDF</a>
     <p id="status"></p>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function editPDF() {

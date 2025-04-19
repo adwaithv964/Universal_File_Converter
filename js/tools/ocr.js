@@ -11,17 +11,32 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>PDF OCR</h2>
-    <input type="file" id="pdfFile" accept="application/pdf" />
+    <div class="file-input-container">
+      <input type="file" id="pdfFile" accept="application/pdf" onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('pdfFile')" style="display: none;">×</button>
+    </div>
     <button onclick="performOCR()">Perform OCR</button>
-    <div id="ocrOutput"></div>
     <p id="status"></p>
+    <pre id="ocrResult"></pre>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function performOCR() {
   const file = document.getElementById('pdfFile').files[0];
-  const ocrOutput = document.getElementById('ocrOutput');
   const status = document.getElementById('status');
+  const ocrResult = document.getElementById('ocrResult');
   if (!file) {
     alert("Please upload a PDF");
     return;
@@ -49,8 +64,10 @@ async function performOCR() {
     };
     await page.render(renderContext).promise;
 
-    const { data: { text } } = await Tesseract.recognize(canvas, 'eng');
-    ocrOutput.textContent = text;
+    const imgData = canvas.toDataURL('image/png');
+    const { data: { text } } = await Tesseract.recognize(imgData, 'eng');
+    
+    ocrResult.textContent = text;
     status.textContent = "OCR complete!";
   } catch (error) {
     console.error("Error performing OCR:", error);

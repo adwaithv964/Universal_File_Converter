@@ -9,10 +9,25 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>AI PDF Summarizer</h2>
-    <input type="file" id="pdfFile" accept="application/pdf" />
+    <div class="file-input-container">
+      <input type="file" id="pdfFile" accept="application/pdf" onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('pdfFile')" style="display: none;">×</button>
+    </div>
     <button onclick="summarizePDF()">Summarize</button>
     <p id="status">AI PDF Summarizer is not yet implemented.</p>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function summarizePDF() {

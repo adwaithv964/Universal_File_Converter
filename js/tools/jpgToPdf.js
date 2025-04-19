@@ -10,11 +10,26 @@ function initializeTool() {
 
   toolContainer.innerHTML = `
     <h2>JPG to PDF</h2>
-    <input type="file" id="jpgFiles" accept="image/jpeg" multiple />
+    <div class="file-input-container">
+      <input type="file" id="jpgFiles" accept="image/jpeg" multiple onchange="toggleRemoveButton(this)" />
+      <button class="remove-file-btn" onclick="clearFileInput('jpgFiles')" style="display: none;">×</button>
+    </div>
     <button onclick="convertJpgToPdf()">Convert</button>
     <a id="downloadLink" style="display:none">Download PDF</a>
     <p id="status"></p>
   `;
+}
+
+function clearFileInput(inputId) {
+  const input = document.getElementById(inputId);
+  input.value = '';
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = 'none';
+}
+
+function toggleRemoveButton(input) {
+  const removeBtn = input.nextElementSibling;
+  removeBtn.style.display = input.files.length > 0 ? 'flex' : 'none';
 }
 
 async function convertJpgToPdf() {
@@ -26,15 +41,14 @@ async function convertJpgToPdf() {
   }
 
   try {
+    status.textContent = "Processing...";
     const pdfDoc = await PDFLib.PDFDocument.create();
 
     for (let file of files) {
-      // Validate file type
       if (!file.type.startsWith('image/jpeg')) {
         throw new Error(`File "${file.name}" is not a JPEG image. Please upload only JPEG files.`);
       }
 
-      // Read the file as a data URL
       const imgData = await new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = () => resolve(reader.result);
@@ -42,7 +56,6 @@ async function convertJpgToPdf() {
         reader.readAsDataURL(file);
       });
 
-      // Strip the data URL prefix and decode base64
       const base64String = imgData.replace(/^data:image\/jpeg;base64,/, '');
       const binaryString = atob(base64String);
       const bytes = new Uint8Array(binaryString.length);
@@ -50,16 +63,11 @@ async function convertJpgToPdf() {
         bytes[i] = binaryString.charCodeAt(i);
       }
 
-      // Embed the JPEG data
       const img = await pdfDoc.embedJpg(bytes);
-
-      // Optionally downscale the image to reduce PDF size
-      const maxWidth = 595; // A4 width at 72 DPI
-      const maxHeight = 842; // A4 height at 72 DPI
+      const maxWidth = 595;
+      const maxHeight = 842;
       let width = img.width;
       let height = img.height;
-
-      // Downscale if the image exceeds A4 dimensions
       const scale = Math.min(maxWidth / width, maxHeight / height, 1);
       width = width * scale;
       height = height * scale;
