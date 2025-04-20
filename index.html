@@ -11,23 +11,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js" defer></script>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <header>
     <div class="header-left">
-      <span class="logo">📄</span>
+      <span class="logo"><img src="/assets/logo_file.png" alt="" style="width: 25px; height: 25px; border-radius: 3px;"></span>
       <h1>Universal PDF Toolkit</h1>
     </div>
     <nav class="header-nav">
-      <div class="dropdown">
-        <button id="toolsButton" onclick="toggleTools()">Tools ▼</button>
+      <div class="dropdown" style="margin-right: 700px;">
+        <button id="toolsButton" onclick="toggleTools()" style="font-size: 20px; font-weight: bold; background: none; border: none; cursor: pointer; padding: 2px; line-height: 1; user-select: none;" >⋮⋮⋮ Tools ▼</button>
         <div id="toolsContainer" class="dropdown-content" style="display: none;">
           <div class="dropdown-grid">
             <!-- Compress -->
             <section>
               <h3>Compress</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('compress')">Compress PDF</button>
+                <button onclick="loadToolAndClose('compress')">
+                  <span class="tool-icon" style="background: #ff4d4d;">📦</span> Compress PDF
+                </button>
               </div>
             </section>
 
@@ -35,12 +40,24 @@
             <section>
               <h3>Organize</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('merge')">Merge PDF</button>
-                <button onclick="loadToolAndClose('split')">Split PDF</button>
-                <button onclick="loadToolAndClose('rotate')">Rotate PDF</button>
-                <button onclick="loadToolAndClose('deletePages')">Delete PDF Pages</button>
-                <button onclick="loadToolAndClose('extractPages')">Extract PDF Pages</button>
-                <button onclick="loadToolAndClose('organize')">Organize PDF</button>
+                <button onclick="loadToolAndClose('merge')">
+                  <span class="tool-icon" style="background: #a855f7;">🗂️</span> Merge PDF
+                </button>
+                <button onclick="loadToolAndClose('split')">
+                  <span class="tool-icon" style="background: #a855f7;">✂️</span> Split PDF
+                </button>
+                <button onclick="loadToolAndClose('rotate')">
+                  <span class="tool-icon" style="background: #a855f7;">🔄</span> Rotate PDF
+                </button>
+                <button onclick="loadToolAndClose('deletePages')">
+                  <span class="tool-icon" style="background: #a855f7;">🗑️</span> Delete PDF Pages
+                </button>
+                <button onclick="loadToolAndClose('extractPages')">
+                  <span class="tool-icon" style="background: #a855f7;">📤</span> Extract PDF Pages
+                </button>
+                <button onclick="loadToolAndClose('organize')">
+                  <span class="tool-icon" style="background: #a855f7;">📚</span> Organize PDF
+                </button>
               </div>
             </section>
 
@@ -48,13 +65,27 @@
             <section>
               <h3>View & Edit</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('edit')">Edit PDF</button>
-                <button onclick="loadToolAndClose('pdfAnnotator')">PDF Annotator</button>
-                <button onclick="loadToolAndClose('pdfReader')">PDF Reader</button>
-                <button onclick="loadToolAndClose('numberPages')">Number Pages</button>
-                <button onclick="loadToolAndClose('crop')">Crop PDF</button>
-                <button onclick="loadToolAndClose('redact')">Redact PDF</button>
-                <button onclick="loadToolAndClose('watermark')">Watermark PDF</button>
+                <button onclick="loadToolAndClose('edit')">
+                  <span class="tool-icon" style="background: #22d3ee;">✏️</span> Edit PDF
+                </button>
+                <button onclick="loadToolAndClose('pdfAnnotator')">
+                  <span class="tool-icon" style="background: #22d3ee;">🖌️</span> PDF Annotator
+                </button>
+                <button onclick="loadToolAndClose('pdfReader')">
+                  <span class="tool-icon" style="background: #22d3ee;">📖</span> PDF Reader
+                </button>
+                <button onclick="loadToolAndClose('numberPages')">
+                  <span class="tool-icon" style="background: #22d3ee;">🔢</span> Number Pages
+                </button>
+                <button onclick="loadToolAndClose('crop')">
+                  <span class="tool-icon" style="background: #22d3ee;">✂️</span> Crop PDF
+                </button>
+                <button onclick="loadToolAndClose('redact')">
+                  <span class="tool-icon" style="background: #22d3ee;">🖍️</span> Redact PDF
+                </button>
+                <button onclick="loadToolAndClose('watermark')">
+                  <span class="tool-icon" style="background: #22d3ee;">🏷️</span> Watermark PDF
+                </button>
               </div>
             </section>
 
@@ -62,11 +93,21 @@
             <section>
               <h3>Convert from PDF</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('pdfToWord')">PDF to Word</button>
-                <button onclick="loadToolAndClose('pdfToExcel')">PDF to Excel</button>
-                <button onclick="loadToolAndClose('pdfToPpt')">PDF to PPT</button>
-                <button onclick="loadToolAndClose('pdfToJpg')">PDF to JPG</button>
-                <button onclick="loadToolAndClose('ocr')">PDF OCR</button>
+                <button onclick="loadToolAndClose('pdfToWord')">
+                  <span class="tool-icon" style="background: #3b82f6;">📜</span> PDF to Word
+                </button>
+                <button onclick="loadToolAndClose('pdfToExcel')">
+                  <span class="tool-icon" style="background: #22c55e;">📊</span> PDF to Excel
+                </button>
+                <button onclick="loadToolAndClose('pdfToPpt')">
+                  <span class="tool-icon" style="background: #f97316;">📽️</span> PDF to PPT
+                </button>
+                <button onclick="loadToolAndClose('pdfToJpg')">
+                  <span class="tool-icon" style="background: #eab308;">🖼️</span> PDF to JPG
+                </button>
+                <button onclick="loadToolAndClose('ocr')">
+                  <span class="tool-icon" style="background: #f97316;">🔍</span> PDF OCR
+                </button>
               </div>
             </section>
 
@@ -74,10 +115,18 @@
             <section>
               <h3>Convert to PDF</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('wordToPdf')">Word to PDF</button>
-                <button onclick="loadToolAndClose('excelToPdf')">Excel to PDF</button>
-                <button onclick="loadToolAndClose('pptToPdf')">PPT to PDF</button>
-                <button onclick="loadToolAndClose('jpgToPdf')">JPG to PDF</button>
+                <button onclick="loadToolAndClose('wordToPdf')">
+                  <span class="tool-icon" style="background: #3b82f6;">📜</span> Word to PDF
+                </button>
+                <button onclick="loadToolAndClose('excelToPdf')">
+                  <span class="tool-icon" style="background: #22c55e;">📊</span> Excel to PDF
+                </button>
+                <button onclick="loadToolAndClose('pptToPdf')">
+                  <span class="tool-icon" style="background: #f97316;">📽️</span> PPT to PDF
+                </button>
+                <button onclick="loadToolAndClose('jpgToPdf')">
+                  <span class="tool-icon" style="background: #eab308;">🖼️</span> JPG to PDF
+                </button>
               </div>
             </section>
 
@@ -85,8 +134,12 @@
             <section>
               <h3>Sign</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('signPdf')">Sign PDF</button>
-                <button onclick="loadToolAndClose('requestSignatures')">Request Signatures (SIGN.com)</button>
+                <button onclick="loadToolAndClose('signPdf')">
+                  <span class="tool-icon" style="background: #ec4899;">✍️</span> Sign PDF
+                </button>
+                <button onclick="loadToolAndClose('requestSignatures')">
+                  <span class="tool-icon" style="background: #eab308;">📨</span> Request Signatures (SIGN.com)
+                </button>
               </div>
             </section>
 
@@ -94,10 +147,18 @@
             <section>
               <h3>AI PDF</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('chat')">Chat with PDF</button>
-                <button onclick="loadToolAndClose('summarizer')">AI PDF Summarizer</button>
-                <button onclick="loadToolAndClose('translator')">Translate PDF</button>
-                <button onclick="loadToolAndClose('aiQuestionGenerator')">AI Question Generator</button>
+                <button onclick="loadToolAndClose('chat')">
+                  <span class="tool-icon" style="background: #2563eb;">💬</span> Chat with PDF
+                </button>
+                <button onclick="loadToolAndClose('summarizer')">
+                  <span class="tool-icon" style="background: #2563eb;">📋</span> AI PDF Summarizer
+                </button>
+                <button onclick="loadToolAndClose('translator')">
+                  <span class="tool-icon" style="background: #2563eb;">🌐</span> Translate PDF
+                </button>
+                <button onclick="loadToolAndClose('aiQuestionGenerator')">
+                  <span class="tool-icon" style="background: #2563eb;">❓</span> AI Question Generator
+                </button>
               </div>
             </section>
 
@@ -105,21 +166,30 @@
             <section>
               <h3>More</h3>
               <div class="tool-list">
-                <button onclick="loadToolAndClose('unlock')">Unlock PDF</button>
-                <button onclick="loadToolAndClose('protect')">Protect PDF</button>
-                <button onclick="loadToolAndClose('flatten')">Flatten PDF</button>
-                <button onclick="loadToolAndClose('pdfScanner')">PDF Scanner</button>
+                <button onclick="loadToolAndClose('unlock')">
+                  <span class="tool-icon" style="background: #f87171;">🔓</span> Unlock PDF
+                </button>
+                <button onclick="loadToolAndClose('protect')">
+                  <span class="tool-icon" style="background: #f87171;">🔒</span> Protect PDF
+                </button>
+                <button onclick="loadToolAndClose('flatten')">
+                  <span class="tool-icon" style="background: #f87171;">🖇️</span> Flatten PDF
+                </button>
+                <button onclick="loadToolAndClose('pdfScanner')">
+                  <span class="tool-icon" style="background: #2563eb;">📷</span> PDF Scanner
+                </button>
               </div>
             </section>
           </div>
         </div>
       </div>
-      <a href="#" onclick="loadTool('compress')">Compress</a>
-      <a href="#" onclick="loadTool('pdfToWord')">Convert</a>
-      <a href="#" onclick="loadTool('merge')">Merge</a>
-      <a href="#" onclick="loadTool('edit')">Edit</a>
-      <a href="#" onclick="loadTool('signPdf')">Sign</a>
+      <a href="#" onclick="loadTool('compress')" style="margin-right: 10px;">Compress</a>
+      <a href="#" onclick="loadTool('pdfToWord')" style="margin-right: 10px;">Convert</a>
+      <a href="#" onclick="loadTool('merge')" style="margin-right: 10px;">Merge</a>
+      <a href="#" onclick="loadTool('edit')" style="margin-right: 10px;">Edit</a>
+      <a href="#" onclick="loadTool('signPdf')" style="margin-right: 10px;">Sign</a>
       <a href="#" onclick="loadTool('chat')">AI PDF</a>
+
     </nav>
     
   </header>
@@ -131,64 +201,65 @@
       <p>Make use of our collection of PDF tools to process digital documents and streamline your workflow seamlessly.</p>
     </section>
 
-    <!-- Tool Container (Moved above Tools Grid) -->
-    <div id="tool-container" align="center" ></div>
+    <!-- Tool Container -->
+    <div id="tool-container"></div>
 
     <!-- Tools Grid -->
     <section class="tools-grid-section">
       <div class="tools-grid">
         <div class="tool-card" onclick="loadTool('compress')">
-          <span class="tool-icon" style="background: #ff4d4d;">📄</span>
+          <span class="tool-icon" style="background: #ff4d4d;">📦</span>
           <h3>Compress PDF</h3>
           <p>Reduce the size of your PDF without losing quality</p>
           <span class="arrow">➔</span>
         </div>
-        <div class="tool-card" onclick="loadTool('pdfToWord')">
-          <span class="tool-icon" style="background: #ff4d4d;">📄</span>
-          <h3>PDF Converter</h3>
-          <p>Convert Word, PowerPoint and Excel files to and from PDF</p>
-          <span class="arrow">➔</span>
-        </div>
-        <div class="tool-card" onclick="loadTool('ocr')">
-          <span class="tool-icon" style="background: #ff4d4d;">📄</span>
-          <h3>PDF OCR</h3>
-          <p>Make text in scans searchable</p>
-          <span class="arrow">➔</span>
-        </div>
-        <div class="tool-card" onclick="loadTool('pptToPdf')">
-          <span class="tool-icon" style="background: #ff8c00;">📄</span>
-          <h3>PPT to PDF</h3>
-          <p>Convert PowerPoint presentations to PDF documents</p>
-          <span class="arrow">➔</span>
-        </div>
-        <div class="tool-card" onclick="loadTool('pdfToPpt')">
-          <span class="tool-icon" style="background: #ff8c00;">📄</span>
-          <h3>PDF to PPT</h3>
-          <p>Convert PDFs to editable PowerPoint presentations</p>
+        <div class="tool-card" onclick="loadTool('merge')">
+          <span class="tool-icon" style="background: #a855f7;">🗂️</span>
+          <h3>Merge PDF</h3>
+          <p>Combine multiple PDF files into one seamless, organized document easily.</p>
           <span class="arrow">➔</span>
         </div>
         <div class="tool-card" onclick="loadTool('jpgToPdf')">
-          <span class="tool-icon" style="background: #ffd700;">📄</span>
+          <span class="tool-icon" style="background: #eab308;">🖼️</span>
           <h3>JPG to PDF</h3>
           <p>Transform JPG, PNG, BMP, GIF, and TIFF images to PDF</p>
           <span class="arrow">➔</span>
         </div>
         <div class="tool-card" onclick="loadTool('pdfToJpg')">
-          <span class="tool-icon" style="background: #ffd700;">📄</span>
+          <span class="tool-icon" style="background: #eab308">🖼️</span>
           <h3>PDF to JPG</h3>
           <p>Extract images from your PDF or save each page as a separate image</p>
           <span class="arrow">➔</span>
+        </div>        
+        <div class="tool-card" onclick="loadTool('pptToPdf')">
+          <span class="tool-icon" style="background: #f97316;">📽️</span>
+          <h3>PPT to PDF</h3>
+          <p>Convert PowerPoint presentations to PDF documents</p>
+          <span class="arrow">➔</span>
         </div>
+        <div class="tool-card" onclick="loadTool('pdfToPpt')">
+          <span class="tool-icon" style="background: #f97316;">📽️</span>
+          <h3>PDF to PPT</h3>
+          <p>Convert PDFs to editable PowerPoint presentations</p>
+          <span class="arrow">➔</span>
+        </div>
+        
         <div class="tool-card" onclick="loadTool('excelToPdf')">
-          <span class="tool-icon" style="background: #32cd32;">📄</span>
+          <span class="tool-icon" style="background: #22c55e;">📊</span>
           <h3>Excel to PDF</h3>
           <p>Convert Excel spreadsheets to PDF documents</p>
           <span class="arrow">➔</span>
         </div>
         <div class="tool-card" onclick="loadTool('pdfToExcel')">
-          <span class="tool-icon" style="background: #32cd32;">📄</span>
+          <span class="tool-icon" style="background: #22c55e;">📊</span>
           <h3>PDF to Excel</h3>
           <p>Convert PDFs to editable Excel spreadsheets</p>
+          <span class="arrow">➔</span>
+        </div>
+        <div class="tool-card" onclick="loadTool('ocr')">
+          <span class="tool-icon" style="background: #f97316;">🔍</span>
+          <h3>PDF OCR</h3>
+          <p>Make text in scans searchable</p>
           <span class="arrow">➔</span>
         </div>
       </div>
@@ -290,6 +361,24 @@
       }
     });
   </script>
+
+
+<script>
+  function toggleAppMenu() {
+    const menu = document.getElementById("appDropdown");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  // Optional: Close when clicking outside
+  window.addEventListener("click", function (e) {
+    const btn = document.querySelector('.grid-dots-btn');
+    const menu = document.getElementById("appDropdown");
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.style.display = "none";
+    }
+  });
+</script>
+
 
   <!-- Load main.js at the end for better performance -->
   <script src="js/main.js"></script>
